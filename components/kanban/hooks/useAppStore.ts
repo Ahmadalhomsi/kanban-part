@@ -1,15 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
-import { v4 } from 'uuid'
+
 import create from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
-import type {
-  AddEventType,
-  DeleteEventType,
-  EventByIdType,
-  EventType,
-} from '@/components/calendar/types'
+
 import type {
   AddCardParams,
   CardType,
@@ -21,15 +16,11 @@ import type {
   RemoveCardFromBoardParams,
 } from '@/components/kanban/types'
 import { initBoard, moveCard } from '@/components/kanban/utils/dndUtils'
-import { getById, insert, removeById } from '@/utils/arrayUtils'
+import { getById, insert, removeById } from '@/components/kanban/utils/arrayUtils'
 
 export interface AppState {
   lists: string[]
   listsById: ListsByIdType
-  eventById: EventByIdType
-  addEvent: (params: AddEventType) => void
-  updateEvent: (params: EventType) => void
-  deleteEvent: (params: DeleteEventType) => void
   initBoard: (params: ListType[]) => void
   setListsById: (params: ListsByIdType) => void
   addCard: (params: AddCardParams) => void
@@ -48,37 +39,7 @@ export const useAppStore = create(
     lists: [],
     listsById: {},
     eventById: {},
-    addEvent({ date, description, title }) {
-      const event: EventType = {
-        date,
-        description,
-        title,
-        id: v4(),
-      }
-      set((state) => {
-        const exists = get().eventById[event.date]
-        if (!exists) {
-          state.eventById[event.date] = { events: [event] }
-          return state
-        }
-        state.eventById[event.date]!.events.push(event)
-      })
-    },
-    updateEvent(params) {
-      const eventIndex = get().eventById[params.date]!.events.findIndex(
-        (e) => e.id === params.id,
-      )
-      set((state) => {
-        state.eventById[params.date]!.events[eventIndex] = params
-      })
-    },
-    deleteEvent({ date, id }) {
-      set((state) => {
-        state.eventById[date]!.events = state.eventById[date]!.events.filter(
-          (e) => e.id !== id,
-        )
-      })
-    },
+
     initBoard(lists) {
       const { ids, obj } = initBoard(lists)
       set((state) => {
@@ -93,7 +54,7 @@ export const useAppStore = create(
     },
     addList(title) {
       const list: ListType = {
-        id: v4(),
+        id: Math.random().toString(36).substr(2, 9),
         cards: [],
         title,
       }
@@ -116,7 +77,7 @@ export const useAppStore = create(
     addCard({ listId, title }) {
       const card: CardType = {
         title,
-        id: v4(),
+        id: Math.random().toString(36).substr(2, 9),
         createdAt: new Date(),
         listId,
         content: '',

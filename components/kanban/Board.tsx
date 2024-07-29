@@ -16,7 +16,7 @@ import { SortableContext } from '@dnd-kit/sortable'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { useAppStore } from '@/hooks/useAppStore'
+import { useAppStore } from '@/components/kanban/hooks/useAppStore'
 
 import AddCardorList from './AddCardOrList'
 import Card from './card/Card'

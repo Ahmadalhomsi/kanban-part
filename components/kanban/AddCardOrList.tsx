@@ -3,11 +3,11 @@ import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { useAppStore } from '@/hooks/useAppStore'
-import { useFocus } from '@/hooks/useFocus'
-import { useOutsideClick } from '@/hooks/useOutsideClick'
+import { useAppStore } from '@/components/kanban/hooks/useAppStore'
+import { useFocus } from '@/components/kanban/hooks/useFocus'
+import { useOutsideClick } from '@/components/kanban/hooks/useOutsideClick'
 
-import { SumbitBtn } from '../common/FormsElem'
+import { SumbitBtn } from './common/FormsElem'
 import { zodResolver } from '@hookform/resolvers/zod/dist/zod.js'
 
 const schema = z.object({

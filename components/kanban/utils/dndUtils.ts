@@ -1,6 +1,6 @@
 import type { Active, Over } from '@dnd-kit/core'
 
-import { listToObj } from '@/utils/arrayUtils'
+import { listToObj } from '@/components/kanban/utils/arrayUtils'
 
 import type { ListsByIdType, ListType, MoveCardParams } from '../types'
 

@@ -4,7 +4,7 @@ import type { CSSProperties, Ref } from 'react'
 import React, { forwardRef } from 'react'
 import { BiEdit } from 'react-icons/bi'
 
-import AppDialog from '@/components/common/AppDialog'
+import AppDialog from '@/components/kanban/common/AppDialog'
 
 import type { CardType } from '../types'
 import CardInfo from './CardInfo'

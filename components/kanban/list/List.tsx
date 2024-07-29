@@ -7,8 +7,8 @@ import { forwardRef, useRef } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 
-import AppMenu from '@/components/common/AppMenu'
-import { useAppStore } from '@/hooks/useAppStore'
+import AppMenu from '@/components/kanban/common/AppMenu'
+import { useAppStore } from '@/components/kanban/hooks/useAppStore'
 
 import AddCardorList from '../AddCardOrList'
 import DraggableCard from '../card/DraggableCard'

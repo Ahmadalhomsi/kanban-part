@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Input, SumbitBtn, TextArea } from '@/components/common/FormsElem'
-import { useAppStore } from '@/hooks/useAppStore'
+import { Input, SumbitBtn, TextArea } from '@/components/kanban/common/FormsElem'
+import { useAppStore } from '@/components/kanban/hooks/useAppStore'
 
 import type { CardType } from '../types'
 
